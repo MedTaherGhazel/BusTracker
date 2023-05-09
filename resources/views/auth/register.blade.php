@@ -52,16 +52,10 @@
 
             <!-- Role -->
             <div class="mt-4">
-                <x-input-label for="role" :value="__('You are registering as')" />
+                <x-input-label for="role" />
 
                 <label>
                     <input type="radio" name="role_id" value="1" checked />
-                    Student
-                </label>
-
-                <label>
-                    <input type="radio" name="role_id" value="2" />
-                    Teacher
                 </label>
 
                 <x-input-error :messages="$errors->get('role')" class="mt-2" />

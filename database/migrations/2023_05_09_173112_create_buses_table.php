@@ -13,9 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-            Schema::table('users', function (Blueprint $table) {
-                $table->foreignId('role_id')->default(1)->constrained();
-            });
+        Schema::create('buses', function (Blueprint $table) {
+            $table->id();
+            $table->string('brand');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -25,8 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('buses');
     }
 };

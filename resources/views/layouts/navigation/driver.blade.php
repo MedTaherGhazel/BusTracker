@@ -5,16 +5,20 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('student.timetable') }}">
+                    <a href="{{ route('driver.timetable') }}">
                         <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('student.timetable')" :active="request()->routeIs('student.timetable')">
+                    <x-nav-link :href="route('driver.timetable')" :active="request()->routeIs('driver.timetable')">
                         {{ __('Timetable') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('driver.travels')" :active="request()->routeIs('driver.travels')">
+                        {{ __('Travels') }}
+                    </x-nav-link>
+
                 </div>
             </div>
 
@@ -76,6 +80,9 @@
             </div>
 
             <div class="mt-3 space-y-1">
+                <x-dropdown-link :href="route('profile.edit')">
+                    {{ __('Profile') }}
+                </x-dropdown-link>
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf

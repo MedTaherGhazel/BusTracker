@@ -1,7 +1,7 @@
-<x-teacher-layout>
+<x-admin-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Timetable') }}
+            {{ __('Users') }}
         </h2>
     </x-slot>
 
@@ -9,9 +9,9 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    Teacher's timetable coming soon.
+                    Gestion des utilisateurs
                 </div>
             </div>
         </div>
     </div>
-</x-teacher-layout>
+</x-admin-layout>

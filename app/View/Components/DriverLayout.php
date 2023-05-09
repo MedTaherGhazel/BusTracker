@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class TeacherLayout extends Component
+class DriverLayout extends Component
 {
     /**
      * Get the view / contents that represents the component.
@@ -13,6 +13,6 @@ class TeacherLayout extends Component
      */
     public function render()
     {
-        return view('layouts.teacher');
+        return view('layouts.driver');
     }
 }
