@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class bus extends Model
 {
     use HasFactory;
+
+    public function voyages()
+    {
+        return $this->hasMany(Voyage::class);
+    }
 }

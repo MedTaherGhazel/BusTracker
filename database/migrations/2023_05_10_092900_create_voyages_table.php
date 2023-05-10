@@ -20,9 +20,10 @@ return new class extends Migration
             $table->string('destination');
             $table->integer('bus_postion');
             $table->boolean('en_route');
-            $table->foreignId('driver_id');
-            $table->foreignId('bus_id');
-            $table->timestamps();
+            $table->unsignedBigInteger('driver_id');
+            $table->foreign('driver_id')->references('id')->on('users');
+            $table->unsignedBigInteger('bus_id');
+            $table->foreign('bus_id')->references('id')->on('buses');
         });
     }
 

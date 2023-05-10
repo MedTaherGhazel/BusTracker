@@ -45,11 +45,15 @@ class User extends Authenticatable
 
     public function getRedirectRoute()
     {
-        return match((int)$this->role_id) {
+        return match ((int)$this->role_id) {
             1 => 'student.timetable',
             2 => 'driver.timetable',
             3 => 'admin.home'
         };
     }
 
+    public function voyages()
+    {
+        return $this->hasMany(Voyage::class);
+    }
 }
