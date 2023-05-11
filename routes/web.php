@@ -6,7 +6,8 @@ use App\Http\Controllers\Admin;
 use App\Http\Controllers\Driver;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VoyageController;
-
+use App\Http\Controllers\BusController;
+use App\Http\Controllers\UserController;
 
 Route::resource('voyages', VoyageController::class);
 
@@ -44,12 +45,14 @@ Route::middleware(['auth', 'verified', 'role:3'])
         Route::get('/home', [Admin\AdminController::class, 'home'])
             ->name('home');
 
-        Route::get('/users', [Admin\AdminController::class, 'users'])
-            ->name('users');
+        Route::resource('buses', BusController::class);
 
-            Route::get('/addbus', [Admin\AdminController::class, 'buses'])
-            ->name('addbus');
-    });
+        Route::any('buses/create', [BusController::class, 'create'])
+                ->name('buses');
+
+        Route::resource('users', UserController::class);
+
+        });
 
 
 Route::middleware('auth')->group(function () {

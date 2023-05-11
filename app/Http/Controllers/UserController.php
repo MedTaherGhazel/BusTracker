@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
-use App\Models\bus;
 
-
-class BusController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,8 @@ class BusController extends Controller
      */
     public function index()
     {
-        $buses=bus::all();
-         return view('admin.buses.index',compact('buses'));
+        $users=User::all();
+         return view('admin.users.index',compact('users'));
     }
 
     /**
@@ -24,20 +23,9 @@ class BusController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        $busid = $request->busid;
-        $brand = $request->brand;
-
-        $newBus = new bus();
-        $newBus->id = $busid;
-        $newBus->brand = $brand;
-        $newBus->dispo = 0;
-        $newBus->save();
-        return redirect()->back();
-
-
-        // return view('admin.buses.create');
+        //
     }
 
     /**

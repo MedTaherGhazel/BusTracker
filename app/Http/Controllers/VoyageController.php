@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Voyage;
 use Illuminate\Http\Request;
 
 class VoyageController extends Controller
@@ -13,7 +14,9 @@ class VoyageController extends Controller
      */
     public function index()
     {
-        //
+        $voyages = Voyage::all();
+        return view('student.timetable',compact('voyages'));
+        return view('voyages.index',compact('voyages'));
     }
 
     /**

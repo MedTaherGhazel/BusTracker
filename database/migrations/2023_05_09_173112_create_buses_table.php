@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('buses', function (Blueprint $table) {
             $table->id();
             $table->string('brand');
+            $table->boolean('dispo');
             $table->timestamps();
         });
     }
