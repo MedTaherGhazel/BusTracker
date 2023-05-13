@@ -19,40 +19,44 @@
                                     <tr>
                                         <th
                                             class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                            Bus id
+                                            Driver ID
                                         </th>
                                         <th
                                             class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                            Brand
+                                            Name
                                         </th>
 
                                         <th
                                             class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                            State
+                                            Email
                                         </th>
+                                        <th
+                                        class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                        Role
+                                    </th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    @foreach ($buses as $bus)
+                                    @foreach ($users as $user)
                                         <tr>
                                             <th
                                                 class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
-                                                {{ $bus->id }}
+                                                {{ $user->id }}
                                             </th>
                                             <td
                                                 class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
-                                                {{ $bus->brand }}
+                                                {{ $user->name }}
                                             </td>
 
                                             <td
                                                 class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                @if ($bus->dispo == 0)
-                                                    <i class="fas fa-arrow-up text-emerald-500 mr-4">Dispo</i>
-                                                @else
-                                                    <i class="fas fa-arrow-down text-red-500 mr-4">Not Dispo</i>
-                                                @endif
+                                               {{ $user->email }}
                                             </td>
+                                            <td
+                                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                           {{ $user->role_id }}
+                                        </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

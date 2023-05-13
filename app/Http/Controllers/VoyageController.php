@@ -15,8 +15,7 @@ class VoyageController extends Controller
     public function index()
     {
         $voyages = Voyage::all();
-        return view('student.timetable',compact('voyages'));
-        return view('voyages.index',compact('voyages'));
+        return view('admin.voyages.index',compact('voyages'));
     }
 
     /**

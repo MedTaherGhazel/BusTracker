@@ -15,15 +15,18 @@
                     <x-nav-link :href="route('admin.home')" :active="request()->routeIs('admin.home')">
                         {{ __('Home') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('admin.voyages.index')" :active="request()->routeIs('admin.voyages.index')">
+                        {{ __('Add Travel') }}
+                    </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('admin.buses.index')" :active="request()->routeIs('adimn.buses.index')">
+                    <x-nav-link :href="route('admin.buses.index')" :active="request()->routeIs('admin.buses.index')">
                         {{ __('Buses') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('adimn.users.index')">
-                        {{ __('Users') }}
+                    <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
+                        {{ __('Manage Roles') }}
                     </x-nav-link>
                 </div>
             </div>

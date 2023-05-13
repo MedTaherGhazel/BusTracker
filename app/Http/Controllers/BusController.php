@@ -34,7 +34,7 @@ class BusController extends Controller
         $newBus->brand = $brand;
         $newBus->dispo = 0;
         $newBus->save();
-        return redirect()->back();
+        return redirect()->back()->with('success','Bus added Successfully');
 
 
         // return view('admin.buses.create');
@@ -70,7 +70,9 @@ class BusController extends Controller
      */
     public function edit($id)
     {
-        //
+        $bus =bus::find($id);
+        dd($bus);
+        return $bus;
     }
 
     /**

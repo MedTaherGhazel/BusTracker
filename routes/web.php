@@ -9,7 +9,6 @@ use App\Http\Controllers\VoyageController;
 use App\Http\Controllers\BusController;
 use App\Http\Controllers\UserController;
 
-Route::resource('voyages', VoyageController::class);
 
 Route::get('/', function () {
     return view('welcome');
@@ -46,11 +45,11 @@ Route::middleware(['auth', 'verified', 'role:3'])
             ->name('home');
 
         Route::resource('buses', BusController::class);
-
+        Route::resource('users', UserController::class);
+        Route::resource('voyages',VoyageController::class);
         Route::any('buses/create', [BusController::class, 'create'])
                 ->name('buses');
 
-        Route::resource('users', UserController::class);
 
         });
 
