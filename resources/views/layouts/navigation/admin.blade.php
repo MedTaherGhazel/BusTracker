@@ -16,7 +16,7 @@
                         {{ __('Home') }}
                     </x-nav-link>
                     <x-nav-link :href="route('admin.voyages.index')" :active="request()->routeIs('admin.voyages.index')">
-                        {{ __('Add Travel') }}
+                        {{ __('Travels') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">

@@ -95,6 +95,8 @@ class BusController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $bus = bus::findOrFail($id);
+        $bus->delete();
+        return redirect()->route('admin.buses.index')->with('success','Bus added Successfully');
     }
 }

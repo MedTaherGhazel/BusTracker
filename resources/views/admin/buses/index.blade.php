@@ -99,17 +99,31 @@
                                                             <i class="fas fa-arrow-down text-red-500 mr-4">Not Dispo</i>
                                                         @endif
                                                     </td>
-
                                                     <td>
-                                                        <button {{ route('admin.buses.edit', $bus->id) }}
-                                                            class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                                            type="button" x-data=""
-                                                            x-on:click.prevent="$dispatch('open-modal', 'update-modal')">{{ __('Edit') }}
+                                                        <div class="static ...">
+                                                            <!-- Static parent -->
+                                                            <div class="inline-block ">
+                                                                <button {{ route('admin.buses.edit', $bus->id) }}
+                                                                    class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                                                    type="button" x-data=""
+                                                                    x-on:click.prevent="$dispatch('open-modal', 'update-modal')">{{ __('Edit') }}
 
-                                                        </button>
-                                                        <button
-                                                            class="bg-indigo-500 text-black active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                                            type="button">Delete</button>
+                                                                </button>
+                                                            </div>
+                                                            <!-- Static parent -->
+                                                            <div class="inline-block">
+                                                                <form
+                                                                    action="{{ route('admin.buses.destroy', [$bus->id]) }}"
+                                                                    onsubmit=return x onclick="deleteConfirm(event)"
+                                                                    method="post">
+                                                                    @csrf
+                                                                    @method('delete')
+                                                                    <button type="submit"
+                                                                        class="bg-indigo-500 text-black active:bg-indigo-600 text-xs font-bold uppercase px-2 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                                                        type="button">Delete</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -118,57 +132,65 @@
                                     </table>
                                     <x-modal name="update-modal" class="background color:white">
                                         <div class="flex w-full h-full p-4 bg-white rounded-lg shadow-lg ">
-                                        <div class="p-6">
-                                            <h2 class="text-lg font-medium text-gray-900 ">
-                                                {{ __('Update bus information') }}
-                                            </h2>
+                                            <div class="p-6">
+                                                <h2 class="text-lg font-medium text-gray-900 ">
+                                                    {{ __('Update bus information') }}
+                                                </h2>
 
-                                                    {{-- Update bus info --}}
-                                                    <div class="block max-w-md rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] ">
-                                                        <form action="{{ route('admin.buses')}}">
-                                                            @csrf
-                                                            @method('put')
-                                                            <div class="grid grid-cols-2 gap-4">
-                                                                <!--Bus id input-->
-                                                                <div class="relative mb-6" data-te-input-wrapper-init>
-                                                                    <label for="busid">Bus ID</label>
-                                                                    <input type="number"
-                                                                        value="{{$bus->id}}"
-                                                                        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                                                                        id="busid"~ name="busid"
-                                                                        placeholder="busid" required />
+                                                {{-- Update bus info --}}
+                                                <div
+                                                    class="block max-w-md rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] ">
+                                                    <form action="{{ route('admin.buses') }}">
+                                                        @csrf
+                                                        @method('put')
+                                                        <div class="grid grid-cols-2 gap-4">
+                                                            <!--Bus id input-->
+                                                            <div class="relative mb-6" data-te-input-wrapper-init>
+                                                                <label for="busid">Bus ID</label>
+                                                                <input type="number" value="{{ $bus->id }}"
+                                                                    class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                                                                    id="busid"~ name="busid"
+                                                                    placeholder="busid" />
+                                                            </div>
+
+                                                            <div class="relative mb-6" data-te-input-wrapper-init>
+                                                                <label for="brand">Brand name
+                                                                </label>
+                                                                <input type="text"
+                                                                    class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                                                                    id="brand" name="brand" placeholder="brand"
+                                                                    required />
+                                                                <div
+                                                                    class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
                                                                 </div>
-
-                                                                <div class="relative mb-6" data-te-input-wrapper-init>
-                                                                    <label for="brand">Brand name
-                                                                    </label>
-                                                                    <input type="text"
-                                                                        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                                                                        id="brand" name="brand"
-                                                                        placeholder="brand" required />
-                                                                    <div
-                                                                        class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
-                                                                    </div>
-
-                                                                </div>
-
-                                                                <div class="mt-6 flex justify-end">
-                                                                </div>
-
-                                                                <button type="submit"
-                                                                    class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                                                    type="button">Add bus</button>
-                                                                <x-secondary-button x-on:click="$dispatch('close')">
-                                                                    {{ __('Cancel') }}
-                                                                </x-secondary-button>
-
 
                                                             </div>
-                                                        </form>
 
+                                                            <div class="mt-6 flex justify-end">
+                                                            </div>
 
-                                                    </div>
+                                                            <div class="static ...">
+                                                                <!-- Static parent -->
+                                                                <div class="inline-block ">
+                                                                    <button type="submit"
+                                                                        class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                                                        type="button">Add bus</button>
+                                                                </div>
+                                                                <!-- Static parent -->
+                                                                <div class="inline-block">
+                                                                    <button x-on:click="$dispatch('close')"
+                                                                        class="bg-indigo-500 text-red active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
+                                                                        {{ __('Cancel') }}
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
                                                     </form>
+
+
+                                                </div>
+                                                </form>
                                     </x-modal>
                                 </div>
                                 @if (Session::has('success'))
@@ -177,7 +199,7 @@
                                     </div>
                                 @endif
                             </div>
-                                </div>
+                        </div>
                     </div>
                 </div>
             </div>
