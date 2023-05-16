@@ -19,6 +19,7 @@ class VoyageController extends Controller
     {
         $voyages = Voyage::all();
         return view('admin.voyages.index',compact('voyages'));
+        return view('student.timetable', compact('voyages'));
     }
 
     /**

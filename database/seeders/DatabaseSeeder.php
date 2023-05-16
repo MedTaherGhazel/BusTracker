@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\bus;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Voyage;
@@ -39,6 +41,17 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password'),
             'role_id' => 1
         ]);
+        bus::create([
+            'reg_num' => '198 tun 8956',
+            'brand' => 'Mercedes',
+            'dispo' => 0
+        ]);
+        bus::create([
+            'reg_num' => '150 tun 3286',
+            'brand' => 'Man',
+            'dispo' => 0
+        ]);
+
 
     }
 }
